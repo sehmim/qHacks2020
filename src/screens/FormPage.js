@@ -1,7 +1,14 @@
 import React from 'react'
-import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity, Picker } from 'react-native'
 
 import Constants from 'expo-constants';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+
+
+let radio_props = [
+    { label: 'New', value: 0 },
+    { label: 'Used', value: 1 }
+];
 
 
 const sendData = (navigate) => {
@@ -11,8 +18,13 @@ const sendData = (navigate) => {
 const FormPage = ({ navigation }) => {
     const { navigate } = navigation
     const [isSubmit, setIsSubmit] = React.useState(true)
-    const [name, setName] = React.useState('')
-    const [car, setCar] = React.useState('')
+
+    const [carMake, setCarMake] = React.useState('')
+    const [year, setYear] = React.useState('')
+    const [model, setModel] = React.useState('')
+
+    const [isUsed, setIsUsed] = React.useState('')
+
 
 
 
@@ -20,21 +32,41 @@ const FormPage = ({ navigation }) => {
         <View style={styles.container}>
             <View style={styles.statusBar} />
 
-            <View style={{ padding: 10 }}>
-                <Text style={{ color: 'white', fontSize: 40, textAlign: 'center' }} >Info</Text>
-                <Text style={{ color: 'white' }}>Full Name: </Text>
+            <View style={{ padding: 15, margin: 10, borderWidth: 2, borderColor: 'white', borderBottomColor: 'black' }}>
+                <Text style={{ color: 'white', fontSize: 40, textAlign: 'center', borderWidth: 2, borderBottomColor: 'white' }} >Info</Text>
+                <Text style={{ color: 'white', paddingTop: 20 }}>Vehicle year: </Text>
                 <TextInput
                     style={{ height: 30, color: 'white', fontSize: 20 }}
-                    placeholder="John Doe"
-                    onChangeText={(text) => setName(text)}
-                    value={name}
+                    placeholder="2010"
+                    onChangeText={(text) => setYear(text)}
+                    value={year}
                 />
-                <Text style={{ color: 'white' }}>Car Type: </Text>
+                <Text style={{ color: 'white', paddingTop: 15 }}>Vehicle make: </Text>
                 <TextInput
                     style={{ height: 30, color: 'white', fontSize: 20 }}
-                    placeholder="Honda Civic"
-                    onChangeText={(text) => setCar(text)}
-                    value={car}
+                    placeholder="Honda"
+                    onChangeText={(text) => setCarMake(text)}
+                    value={carMake}
+                />
+                <Text style={{ color: 'white', paddingTop: 15 }}>Vehicle model: </Text>
+                <TextInput
+                    style={{ height: 30, color: 'white', fontSize: 20 }}
+                    placeholder="Civic"
+                    onChangeText={(text) => setCarMake(setModel)}
+                    value={model}
+                />
+                <Text style={{ color: 'white', paddingTop: 15, paddingBottom: 10 }}>Vehicle condition when purchased: </Text>
+                <RadioForm
+                    radio_props={radio_props}
+                    initial={0}
+                    onPress={(value) => { setIsUsed(value) }}
+                />
+                <Text style={{ color: 'white', paddingTop: 15 }}>Driving Distance: </Text>
+                <TextInput
+                    style={{ height: 30, color: 'white', fontSize: 20 }}
+                    placeholder="100,000km"
+                    onChangeText={(text) => setCarMake(setModel)}
+                    value={model}
                 />
             </View>
             <TouchableOpacity

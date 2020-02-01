@@ -5,6 +5,7 @@ const ScreenLayout = StyleSheet.create({
         flex: 7,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'rgb(14,198,221)'
     },
     ScreenMainPage: {
         flex: 5,
@@ -24,7 +25,10 @@ const ScreenLayout = StyleSheet.create({
     },
     ButtonText: {
         alignItems: 'center',
-    }
+    },
+    statusBar: {
+        height: Constants.statusBarHeight,
+    },
 });
 
 export default ScreenLayout;

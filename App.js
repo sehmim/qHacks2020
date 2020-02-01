@@ -7,6 +7,8 @@ import LandingPage from './src/screens/LandingPage';
 import FormPage from './src/screens/FormPage';
 import Results from './src/screens/Results';
 
+import Constants from 'expo-constants';
+
 const AppStack = createStackNavigator(
   {
     LandingPage: {
@@ -61,7 +63,10 @@ const AppContainer = createAppContainer(
 
 const App = () => {
   return (
-    <AppContainer />
+    <>
+      <View style={styles.statusBar} />
+      <AppContainer />
+    </>
   )
 }
 
@@ -73,5 +78,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+
+  },
+  statusBar: {
+    height: Constants.statusBarHeight,
   },
 });
