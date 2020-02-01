@@ -4,6 +4,8 @@ import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity, Picker } f
 import Constants from 'expo-constants';
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 
+import screensStyles from '../styles/ScreensStyles';
+
 
 let radio_props = [
     { label: 'New', value: 0 },
@@ -32,8 +34,8 @@ const FormPage = ({ navigation }) => {
         <View style={styles.container}>
             <View style={styles.statusBar} />
 
-            <View style={{ padding: 15, margin: 10, borderWidth: 2, borderColor: 'white', borderBottomColor: 'black' }}>
-                <Text style={{ color: 'white', fontSize: 40, textAlign: 'center', borderWidth: 2, borderBottomColor: 'white' }} >Info</Text>
+            <View style={{ padding: 15, margin: 10, borderWidth: 2, borderColor: 'white', borderBottomColor: 'black', borderRadius: 10 }}>
+                <Text style={{ color: 'white', fontSize: 40, textAlign: 'center', borderWidth: 2, borderBottomColor: 'white', borderRadius: 20 }} >Info</Text>
                 <Text style={{ color: 'white', paddingTop: 20 }}>Vehicle year: </Text>
                 <TextInput
                     style={{ height: 30, color: 'white', fontSize: 20 }}
@@ -68,12 +70,15 @@ const FormPage = ({ navigation }) => {
                     onChangeText={(text) => setCarMake(setModel)}
                     value={model}
                 />
+                <View style={{ alignItems: 'center' }}>
+                    <TouchableOpacity
+                        style={[screensStyles.Button, { backgroundColor: 'rgb(14,198,221)' }]}
+                        title="Submit"
+                        onPress={() => sendData(navigate)}>
+                        <Text>Submit</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <TouchableOpacity
-                title="Submit"
-                onPress={() => sendData(navigate)}>
-                <Text>Submit</Text>
-            </TouchableOpacity>
         </View >
     )
 }

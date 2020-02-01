@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
 
 const ScreenLayout = StyleSheet.create({
     ScreenWrapper: {
@@ -21,10 +22,12 @@ const ScreenLayout = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 30,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+
     },
     ButtonText: {
         alignItems: 'center',
+
     },
     statusBar: {
         height: Constants.statusBarHeight,
