@@ -1,44 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native'
 import Constants from 'expo-constants';
 import screensStyles from '../styles/ScreensStyles';
 import { MyCard } from '../components/MyCard';
 
-const BANKS = [
-    {
-        name: 'Poop',
-        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-        confidence: '88',
-        quote: '230'
-    },
-    {
-        name: 'Poop',
-        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-        confidence: '88',
-        quote: '230'
-    },
-    {
-        name: 'Poop',
-        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-        confidence: '88',
-        quote: '230'
-    },
-    {
-        name: 'Poop',
-        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-        confidence: '88',
-        quote: '230'
-    },
-]
-
 const Results = (props) => {
+
+    const [companies, setCompanies] = useState([
+        {
+            name: 'Poop',
+            avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
+            confidence: '88',
+            quote: '230'
+        },
+        {
+            name: 'Poop',
+            avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
+            confidence: '88',
+            quote: '230'
+        },
+        {
+            name: 'Poop',
+            avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
+            confidence: '88',
+            quote: '230'
+        },
+        {
+            name: 'Poop',
+            avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
+            confidence: '88',
+            quote: '230'
+        },
+    ])
 
     const { navigate } = props.navigation
 
     return (
         <>
             <View style={screensStyles.ScreenWrapper}>
-                {/* <View style={styles.statusBar} /> */}
 
                 <View style={screensStyles.ScreenMainPage}>
 
@@ -48,7 +47,7 @@ const Results = (props) => {
 
                             <SafeAreaView style={{ width: 400 }}>
                                 <FlatList
-                                    data={BANKS}
+                                    data={companies}
                                     renderItem={({ item }) => <MyCard name={item.name} confidence={item.confidence} quote={item.quote} />}
                                     keyExtractor={item => item.id}
                                 />

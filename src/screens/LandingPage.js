@@ -30,15 +30,16 @@ const LandingPage = (props) => {
 
     return (
         <>
+            <View style={styles.StartScreenBackground}>
+            </View>
             <View style={styles.ScreenWrapper}>
                 {
                     isLoading ?
-                        <Text>Gif</Text>
+                        <Image source={require('../styles/car.svg')} style={{width: 50, height: 50}} />
                         :
                         <>
                             <View style={styles.ScreenMainPage}>
-                                <View style={{ backgroundColor: "red", width: '100%', height: 200 }}>
-                                    <Text>loool</Text>
+                                <View style={{}}>
                                 </View>
                             </View>
                             <View style={styles.ScreenButtom}>

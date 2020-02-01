@@ -1,42 +1,39 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity, Picker, KeyboardAvoidingView } from 'react-native'
-
 import Constants from 'expo-constants';
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 
 import screensStyles from '../styles/ScreensStyles';
 
-
-let radio_props = [
-    { label: 'New', value: 0 },
-    { label: 'Used', value: 1 }
-];
-
-
-const sendData = (navigate, vehicleInfo, vehicleDistance, age, location, isUsed) => {
-    let inputData = {
-        vehicleInfo,
-        vehicleDistance,
-        age,
-        location,
-        isUsed: 1 ? "Used" : "New"
-    }
-    console.log("Sedning Data: ", inputData)
-    navigate("Results")
-}
-
 const FormPage = ({ navigation }) => {
     const { navigate } = navigation
-    const [isSubmit, setIsSubmit] = React.useState(true)
+    const [isSubmit, setIsSubmit] = useState(true)
+    
+    const [isUsed, setIsUsed] = useState('')
 
-    const [isUsed, setIsUsed] = React.useState('')
+    const [vehicleInfo, setVehicleInfo] = useState('')
+    const [vehicleDistance, setVehicleDistance] = useState('')
 
-    const [vehicleInfo, setVehicleInfo] = React.useState('')
-    const [vehicleDistance, setVehicleDistance] = React.useState('')
+    const [age, setAge] = useState('')
+    const [location, setLocation] = useState('')
 
-    const [age, setAge] = React.useState('')
-    const [location, setLocation] = React.useState('')
+    const radio_props = [
+        { label: 'New', value: 0 },
+        { label: 'Used', value: 1 }
+    ];
 
+    const sendData = (navigate, vehicleInfo, vehicleDistance, age, location, isUsed) => {
+        let inputData = {
+            vehicleInfo,
+            vehicleDistance,
+            age,
+            location,
+            isUsed: 1 ? "Used" : "New"
+        }
+        console.log("Sedning Data: ", inputData)
+        navigate("Results")
+    }
+    
 
     return (
         <View style={styles.container}>
