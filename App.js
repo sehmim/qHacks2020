@@ -8,6 +8,7 @@ import FormPage from './src/screens/FormPage';
 import Results from './src/screens/Results';
 
 import Constants from 'expo-constants';
+import ViewScreen from './src/screens/ViewScreen';
 
 const AppStack = createStackNavigator(
   {
@@ -45,7 +46,16 @@ const AppStack = createStackNavigator(
           backgroundColor: 'rgb(96,188,250)',
         },
       },
-    }
+    },
+    ViewScreen: {
+      screen: ViewScreen,
+      navigationOptions: {
+        header: null,
+        headerStyle: {
+          backgroundColor: 'rgb(96,188,250)',
+        },
+      },
+    },
   }
 );
 

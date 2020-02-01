@@ -4,36 +4,47 @@ import Constants from 'expo-constants';
 import screensStyles from '../styles/ScreensStyles';
 import { MyCard } from '../components/MyCard';
 
+const BANKS = [
+    {
+        name: 'TD BANK',
+        confidence: '88',
+        quote: '1'
+    },
+    {
+        name: 'CIBC',
+        confidence: '88',
+        quote: '2'
+    },
+    {
+        name: 'SCOTIABANK',
+        confidence: '88',
+        quote: '3'
+    },
+    {
+        name: 'BMO',
+        confidence: '88',
+        quote: '4'
+    },
+    {
+        name: 'RBC',
+        confidence: '88',
+        quote: '1'
+    },
+]
+
 const Results = (props) => {
 
-    const [companies, setCompanies] = useState([
-        {
-            name: 'Poop',
-            avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-            confidence: '88',
-            quote: '230'
-        },
-        {
-            name: 'Poop',
-            avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-            confidence: '88',
-            quote: '230'
-        },
-        {
-            name: 'Poop',
-            avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-            confidence: '88',
-            quote: '230'
-        },
-        {
-            name: 'Poop',
-            avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-            confidence: '88',
-            quote: '230'
-        },
-    ])
+    BANKS.sort((a, b) => {
+        var x = a.quote; var y = b.quote;
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+
+
 
     const { navigate } = props.navigation
+    const onSelect = React.useCallback(({ name, confidence, quote, onSelect, selected, uri }) => {
+        navigate('ViewScreen', { name, confidence, quote, uri })
+    }, [])
 
     return (
         <>
@@ -47,8 +58,16 @@ const Results = (props) => {
 
                             <SafeAreaView style={{ width: 400 }}>
                                 <FlatList
-                                    data={companies}
-                                    renderItem={({ item }) => <MyCard name={item.name} confidence={item.confidence} quote={item.quote} />}
+                                    data={BANKS}
+                                    renderItem={({ item }) =>
+                                        <MyCard
+                                            uri={item.uri}
+                                            name={item.name}
+                                            confidence={item.confidence}
+                                            quote={item.quote}
+                                            onSelect={onSelect}
+                                            selected={item.selected}
+                                        />}
                                     keyExtractor={item => item.id}
                                 />
                             </SafeAreaView>

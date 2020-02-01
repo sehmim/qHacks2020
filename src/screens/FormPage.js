@@ -5,6 +5,24 @@ import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'reac
 
 import screensStyles from '../styles/ScreensStyles';
 
+
+let radio_props = [
+    { label: 'New', value: 0 },
+    { label: 'Used', value: 1 }
+];
+
+
+const sendData = (navigate, vehicleInfo, vehicleDistance, age, location, isUsed) => {
+    let inputData = {
+        vehicleInfo,
+        vehicleDistance,
+        age,
+        location,
+        isUsed: 1 ? "Used" : "New"
+    }
+    navigate("Results")
+}
+
 const FormPage = ({ navigation }) => {
     const { navigate } = navigation
     const [isSubmit, setIsSubmit] = useState(true)
