@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
         height: 400,
     },
     title: {
-        fontSize: 40
+        fontSize: 40,
+        color: 'white'
     }
 });
 
