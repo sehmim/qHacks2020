@@ -1,14 +1,54 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Dashboard from './src/screens/Dashboard';
 
-export default function App() {
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import LandingPage from './src/screens/LandingPage';
+import FormPage from './src/screens/FormPage';
+import Results from './src/screens/Results';
+
+const AppStack = createStackNavigator(
+  {
+    LandingPage: {
+      screen: LandingPage,
+      navigationOptions: {
+        headerLeft: null
+      },
+    },
+    Form: {
+      screen: FormPage,
+      navigationOptions: {
+        headerLeft: null
+      },
+    },
+    Results: {
+      screen: Results,
+      navigationOptions: {
+        headerLeft: null
+      },
+    }
+  }
+);
+
+
+const AppContainer = createAppContainer(
+  createSwitchNavigator(
+    {
+      App: AppStack,
+    },
+    {
+      initialRouteName: 'App',
+    }
+  )
+);
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Dashboard />
-    </View>
-  );
+    <AppContainer />
+  )
 }
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {

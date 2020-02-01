@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 
 import * as firebase from 'firebase';
-
 import { firebaseConfig } from '../../Firebaseconfig'
 
 const FIREBASE_CONFIG = {
@@ -22,12 +21,21 @@ if (!firebase.apps.length) {
 }
 
 
-const Dashboard = () => {
+
+const LandingPage = (props) => {
+
+    const { navigate } = props.navigation;
+
     return (
-        <View>
-            <Text>Dashboard</Text>
+        <View style={{ flex: 6 }}>
+            <Text style={{ flex: 5 }}>LandingPage</Text>
+            <Button
+                style={{}}
+                title="Get Started"
+                onPress={() => navigate('Form')}>
+            </Button>
         </View>
     )
 }
 
-export default Dashboard
+export default LandingPage
