@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Platform } from 'react-native';
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
 
   },
   statusBar: {
-    height: Constants.statusBarHeight,
+    height: Platform.OS === "android" ? Constants.statusBarHeight : 0,
   },
 });

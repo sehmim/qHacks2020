@@ -32,7 +32,7 @@ const LandingPage = (props) => {
             <View style={styles.ScreenWrapper}>
                 <View style={styles.ScreenMainPage}>
                     <View style={{}}>
-                        <Text>loool</Text>
+                        {/* <Text>loool</Text> */}
                     </View>
                 </View>
                 <View style={styles.ScreenButtom}>
