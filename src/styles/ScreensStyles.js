@@ -44,6 +44,19 @@ const ScreenLayout = StyleSheet.create({
     statusBar: {
         height: Constants.statusBarHeight,
     },
+    FormPageContainer: {
+        flex: 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    FormPageInput: {
+        borderStyle: "solid",
+        borderColor: "black",
+        borderWidth: 1,
+        borderRadius: 5,
+        width: 300,
+        height: 50,
+    }
 });
 
 export default ScreenLayout;

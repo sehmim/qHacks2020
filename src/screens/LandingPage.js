@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/ScreensStyles';
 // import Svg, {Circle, Rect} from 'react-native-svg';
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Platform } from 'react-native'
 
 import * as firebase from 'firebase';
 import { firebaseConfig } from '../../FirebaseConfig'
@@ -44,7 +44,7 @@ const LandingPage = (props) => {
 
                             <Text style={{ position: "absolute", top: "15%", left: "37%" }}>Carshurance</Text>
 
-                            <Image source={require('../styles/car.png')} style={{ width: "80%", height: "25%", position: "absolute", top: "35%" }} />
+                            <Image source={require('../styles/car.png')} style={{ width: Platform.OS === "android" ? "83%" : "95%", height: "30%", position: "absolute", top: "35%" }} />
                             <View style={styles.ScreenMainPage}>
                             </View>
                             <View style={styles.ScreenButtom}>
