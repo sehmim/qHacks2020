@@ -21,7 +21,6 @@ const sendData = (navigate, vehicleInfo, vehicleDistance, age, location, isUsed)
         location,
         isUsed: 1 ? "Used" : "New"
     }
-    console.log("Sedning Data: ", inputData)
     navigate("Results")
 }
 
