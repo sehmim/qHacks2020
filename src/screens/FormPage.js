@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, StyleSheet } from 'react-native'
 
 
 const sendData = (navigate) => {
@@ -9,8 +9,10 @@ const sendData = (navigate) => {
 const FormPage = ({ navigation }) => {
     const { navigate } = navigation
     return (
-        <View style={{ flex: 6 }}>
-            <Text style={{ flex: 5 }}>FormPage</Text>
+        <View style={styles.container}>
+            <Text style={{ flex: 5 }}>
+
+            </Text>
             <Button
                 style={{}}
                 title="Submit"
@@ -20,4 +22,11 @@ const FormPage = ({ navigation }) => {
     )
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 6,
+        backgroundColor: 'rgb(14,198,221)',
+    },
+});
 export default FormPage
+
