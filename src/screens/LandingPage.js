@@ -3,8 +3,7 @@ import styles from '../styles/ScreensStyles';
 import { View, Text, TouchableOpacity } from 'react-native'
 
 import * as firebase from 'firebase';
-
-import { firebaseConfig } from '../../FirebaseConfig.js'
+import { firebaseConfig } from '../../FirebaseConfig'
 
 const FIREBASE_CONFIG = {
     apiKey: firebaseConfig.API_KEY,
@@ -22,24 +21,24 @@ if (!firebase.apps.length) {
     firebase.initializeApp(FIREBASE_CONFIG)
 }
 
-
-
 const LandingPage = (props) => {
 
     const { navigate } = props.navigation;
 
     return (
         <>
-            <View style={styles.ScreenWrapper}>
-                <View style={styles.ScreenMainPage}>
-                    <Text>LandingPage</Text>
-                </View>
-                <View style={styles.ScreenButtom}>
-                    <TouchableOpacity style={styles.Button} onPress={() => navigate('Form')}>
-                        <Text style={styles.ButtonText}>Get Started</Text>
-                    </TouchableOpacity>
+        <View style={styles.ScreenWrapper}>
+            <View style={styles.ScreenMainPage}>
+                <View style={{backgroundColor: "red", width: '100%', height: 200}}>
+                    <Text>loool</Text>
                 </View>
             </View>
+            <View style={styles.ScreenButtom}>
+                <TouchableOpacity style={styles.Button} onPress={() => navigate('Form')}>
+                    <Text style={styles.ButtonText}>Get Started</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
         </>
     )
 }

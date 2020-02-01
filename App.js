@@ -12,19 +12,36 @@ const AppStack = createStackNavigator(
     LandingPage: {
       screen: LandingPage,
       navigationOptions: {
-        headerLeft: null
+        header: null,
+        headerLeft: null,
+        headerStyle: {
+          backgroundColor: 'rgb(96,188,250)',
+        },
+        headerTitleStyle: {
+          color: 'white'
+        }
       },
     },
     Form: {
       screen: FormPage,
       navigationOptions: {
-        headerLeft: null
+        headerLeft: null,
+        header: null,
+        headerLeft: null,
+        headerStyle: {
+          backgroundColor: 'rgb(96,188,250)',
+        },
       },
     },
     Results: {
       screen: Results,
       navigationOptions: {
-        headerLeft: null
+        headerLeft: null,
+        header: null,
+        headerLeft: null,
+        headerStyle: {
+          backgroundColor: 'rgb(96,188,250)',
+        },
       },
     }
   }
