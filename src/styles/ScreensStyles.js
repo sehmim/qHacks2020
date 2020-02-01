@@ -56,6 +56,13 @@ const ScreenLayout = StyleSheet.create({
         borderRadius: 5,
         width: 300,
         height: 50,
+    },
+    formLebel: {
+        justifyContent: 'flex-start',
+        textAlign: 'left',
+        fontSize: 10,
+        paddingLeft: 5,
+
     }
 });
 

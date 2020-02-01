@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/ScreensStyles';
 import { Input } from 'react-native-elements';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Picker, KeyboardAvoidingView } from 'react-native'
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Picker, KeyboardAvoidingView, Image } from 'react-native'
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 
 import screensStyles from '../styles/ScreensStyles';
 
+const Imgs = [
+    '',
+    'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/access_account_99n5.svg',
+    'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/thought_process_67my.svg',
+    'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/forgot_password_gi2d.svg'
+]
 
 const FormPage = ({ navigation }) => {
     const { navigate } = navigation
@@ -74,12 +80,21 @@ const FormPage = ({ navigation }) => {
         switch (idIndex) {
             case 1:
                 return (
-                    <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                        <Input
-                            placeholder='Honda'
-                            onChangeText={(text) => handleMakeChange(text)}
-                            value={make}
-                            onSubmitEditing={() => handleSubmit(idIndex)}
+                    <View>
+                        <Text style={styles.formLebel}>Make: </Text>
+
+                        <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                            <Input
+                                placeholder='Honda'
+                                onChangeText={(text) => handleMakeChange(text)}
+                                value={make}
+                                onSubmitEditing={() => handleSubmit(idIndex)}
+                            />
+                        </View>
+                        <Image
+                            style={{ width: '100%', height: '50%', marginTop: 20 }}
+                            resizeMode="cover"
+                            source={require('../styles/1.png')}
                         />
                     </View>
                 )
@@ -95,15 +110,15 @@ const FormPage = ({ navigation }) => {
                     </View>
                 )
             case 3:
-                return (<View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                    <Input
-                        placeholder='40,000km'
-                        onChangeText={(text) => handleAverageDistanceChange(text)}
-                        value={vehicleDistance}
-                        onSubmitEditing={() => handleSubmit(idIndex)}
-                    />
-                </View>
-
+                return (
+                    <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                        <Input
+                            placeholder='40,000km'
+                            onChangeText={(text) => handleAverageDistanceChange(text)}
+                            value={vehicleDistance}
+                            onSubmitEditing={() => handleSubmit(idIndex)}
+                        />
+                    </View>
                 )
             case 4:
                 return (
@@ -150,22 +165,21 @@ const FormPage = ({ navigation }) => {
         }
     }
     return (
-        <>
-            <View style={[styles.FormPageContainer, { alignItems: 'center', }]}>
-                <Text>
-                    Counting {idIndex}/7
+        <View style={[styles.FormPageContainer, { alignItems: 'center' }]}>
+            <Text>
+                Counting {idIndex}/7
                 </Text>
-                <KeyboardAvoidingView>
-                    {renderInput(idIndex)}
-                </KeyboardAvoidingView>
-            </View>
-        </>
+            <KeyboardAvoidingView style={{}}>
+                {renderInput(idIndex)}
+            </KeyboardAvoidingView>
+        </View>
     )
 }
 
 const InputHelper = (setInputHook, input, placeholder) => {
     return (
         <>
+
             <View style={screensStyles.FormPageInput}>
                 <Input
                     placeholder={placeholder}
@@ -176,7 +190,9 @@ const InputHelper = (setInputHook, input, placeholder) => {
                 <TouchableOpacity style={styles.Button} onPress={() => navigate('Form')}>
                     <Text style={styles.ButtonText}>Next</Text>
                 </TouchableOpacity>
+
             </View>
+
         </>)
 }
 
