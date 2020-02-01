@@ -1,8 +1,10 @@
 import React from 'react'
+import styles from '../styles/styles';
 import { View, Text, Button } from 'react-native'
 
 import * as firebase from 'firebase';
-import { firebaseConfig } from '../../Firebaseconfig'
+
+import { firebaseConfig } from '../../FirebaseConfig.js'
 
 const FIREBASE_CONFIG = {
     apiKey: firebaseConfig.API_KEY,
@@ -27,14 +29,20 @@ const LandingPage = (props) => {
     const { navigate } = props.navigation;
 
     return (
-        <View style={{ flex: 6 }}>
-            <Text style={{ flex: 5 }}>LandingPage</Text>
-            <Button
-                style={{}}
-                title="Get Started"
-                onPress={() => navigate('Form')}>
-            </Button>
-        </View>
+        <>
+            <View style={styles.ScreenWrapper}>
+                <View style={styles.ScreenMainPage}>
+                    <Text>LandingPage</Text>
+                </View>
+                <View style={styles.ScreenButtom}>
+                    <Button
+                        style={{}}
+                        title="Get Started"
+                        onPress={() => navigate('Form')}>
+                    </Button>
+                </View>
+            </View>
+        </>
     )
 }
 
