@@ -25,11 +25,15 @@ const FormPage = ({ navigation }) => {
 
     const [isUsed, setIsUsed] = useState('')
 
-    const [vehicleInfo, setVehicleInfo] = useState('')
+    const [year, setYear] = useState('')
     const [vehicleDistance, setVehicleDistance] = useState('')
 
     const [age, setAge] = useState('')
+
+    const [make, setMake] = useState('')
+    const [model, setModel] = useState('')
     const [location, setLocation] = useState('')
+
 
     const radio_props = [
         { label: 'New', value: 0 },
@@ -48,19 +52,97 @@ const FormPage = ({ navigation }) => {
         navigate("Results")
     }
 
+    const [idIndex, setIdIndex] = React.useState(1)
 
+
+    const renderInput = (idIndex) => {
+        switch (idIndex) {
+            case 1:
+                return (
+                    <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                        <Input
+                            placeholder='Honda'
+                            onChangeText={(text) => setMake(text)}
+                            value={make}
+                            onSubmitEditing={() => setIdIndex(idIndex++)}
+                        />
+                    </View>
+                )
+                break;
+            // case 2:
+            //     return (
+            //         <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+            //             <Input
+            //                 placeholder='Civic'
+            //                 onChangeText={(text) => setModel(text)}
+            //                 value={model}
+            //                 onSubmitEditing={() => setIdIndex(idIndex++)}
+            //             />
+            //         </View>
+            //     )
+            //     break;
+            // case 3:
+            //     return (<View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+            //         <Input
+            //             placeholder='40,000km'
+            //             onChangeText={(text) => setVehicleDistance(text)}
+            //             value={vehicleInfo}
+            //             onSubmitEditing={() => setIdIndex(idIndex++)}
+            //         />
+            //     </View>
+
+            //     )
+            //     break;
+            // case 4:
+            //     return (
+            //         <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+            //             <Input
+            //                 placeholder='Toronto'
+            //                 onChangeText={(text) => setLocation(text)}
+            //                 value={location}
+            //                 onSubmitEditing={() => setIdIndex(idIndex++)}
+            //             />
+            //         </View>
+            //     )
+            //     break;
+            // case 5:
+            //     return (
+            //         <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+            //             <Input
+            //                 placeholder='Driver Age'
+            //                 onChangeText={(text) => setAge(text)}
+            //                 value={vehicleInfo}
+            //                 onSubmitEditing={() => setIdIndex(idIndex++)}
+            //             />
+            //         </View>
+            //     )
+            //     break;
+            // case 6:
+            //     return (
+            //         <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+            //             <RadioForm
+            //                 radio_props={radio_props}
+            //                 initial={0}
+            //                 onPress={(value) => {
+            //                     setIsUsed(value)
+            //                 }}
+            //             />
+            //         </View>
+            //     )
+            //     break;
+
+            default:
+                break;
+        }
+    }
     return (
-
         <>
-            <View style={styles.FormPageContainer}>
-                <View style={styles.FormPageInput}>
-                    <Input
-                        placeholder='Honda Civic 2010'
-                        onChangeText={(text) => setVehicleInfo(text)}
-                        value={vehicleInfo}
-                    />
-                </View>
-                <View style={styles.FormPageInput}>
+            <View style={[styles.FormPageContainer, { alignItems: 'center', }]}>
+                <Text>
+                    Counting {idIndex}/7
+                </Text>
+                {renderInput(idIndex)}
+                {/* <View style={styles.FormPageInput}>
                     <Input
                         placeholder='Age'
                         onChangeText={(text) => setAge(text)}
@@ -79,7 +161,7 @@ const FormPage = ({ navigation }) => {
                         onChangeText={(text) => setVehicleDistance(text)}
                         value={vehicleDistance}
                     />
-                </View>
+                </View> */}
             </View>
         </>
         // <View style={styles.container}>
@@ -137,6 +219,25 @@ const FormPage = ({ navigation }) => {
         //     </View>
         // </View >
     )
+}
+
+
+
+const InputHelper = (setInputHook, input, placeholder) => {
+    return (
+        <>
+            <View style={screensStyles.FormPageInput}>
+                <Input
+                    placeholder={placeholder}
+                    onChangeText={(text) => setInputHook(text)}
+                    value={input} />
+            </View>
+            <View style={{ margin: 10 }}>
+                <TouchableOpacity style={styles.Button} onPress={() => navigate('Form')}>
+                    <Text style={styles.ButtonText}>Next</Text>
+                </TouchableOpacity>
+            </View>
+        </>)
 }
 
 export default FormPage
