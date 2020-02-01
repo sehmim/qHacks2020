@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from '../styles/styles';
-import { View, Text, Button } from 'react-native'
+import styles from '../styles/ScreensStyles';
+import { View, Text, TouchableOpacity } from 'react-native'
 
 import * as firebase from 'firebase';
 
@@ -35,11 +35,9 @@ const LandingPage = (props) => {
                     <Text>LandingPage</Text>
                 </View>
                 <View style={styles.ScreenButtom}>
-                    <Button
-                        style={{}}
-                        title="Get Started"
-                        onPress={() => navigate('Form')}>
-                    </Button>
+                    <TouchableOpacity style={styles.Button} onPress={() => navigate('Form')}>
+                        <Text style={styles.ButtonText}>Get Started</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </>
