@@ -39,7 +39,7 @@ const LandingPage = (props) => {
                         source={{ uri: 'https://media2.giphy.com/media/kVlXwd6iaE33q/source.gif' }}
                     /> :
                     <>
-                        <Text style={[styles.title, shadow]}>CarSurance</Text>
+                        <Text style={[styles.title]}>CarSurance</Text>
                         <Button
                             title="Get Started"
                             onPress={() => navigate('Form')}>
@@ -48,17 +48,6 @@ const LandingPage = (props) => {
             }
         </View>
     )
-}
-
-const shadow = {
-    shadowColor: '#30C1DD',
-    shadowRadius: 10,
-    shadowOpacity: 0.6,
-    elevation: 8,
-    shadowOffset: {
-        width: 0,
-        height: 4
-    }
 }
 
 const styles = StyleSheet.create({
@@ -73,9 +62,7 @@ const styles = StyleSheet.create({
         height: 400,
     },
     title: {
-        color: 'white',
-        fontSize: 60,
-        padding: 20
+        fontSize: 40
     }
 });
 
