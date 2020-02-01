@@ -44,15 +44,15 @@ const ViewScreen = (props) => {
         <View style={ScreensStyles.ScreenWrapper}>
             {/* <View style={styles.statusBar} /> */}
 
-            <Text style={{ fontSize: 40, color: 'white' }} >{name.replace(/['"]+/g, '')}</Text>
+            <Text style={{ fontSize: 40 }} >{name.replace(/['"]+/g, '')}</Text>
             <Image
                 style={{ width: 380, height: 300, margin: 10 }}
                 resizeMode="cover"
                 source={{ uri: URI }}
             />
             <View style={{ flexDirection: 'column' }}>
-                <Text style={{ fontSize: 20, color: 'white', margin: 5 }}>Quote: {quote.replace(/['"]+/g, '')}</Text>
-                <Text style={{ fontSize: 20, color: 'white', margin: 5 }}>Probability: {confidence.replace(/['"]+/g, '')}</Text>
+                <Text style={{ fontSize: 20, margin: 5, fontFamily: 'Iowan Old Style' }}>Quote: {quote.replace(/['"]+/g, '')}</Text>
+                <Text style={{ fontSize: 20, margin: 5 }}>Probability: {confidence.replace(/['"]+/g, '')}</Text>
                 <TouchableOpacity style={styles.Button} onPress={() => alert("TO DO CALL")}>
                     <Image
                         style={{ width: 90, height: 70, padding: 50, margin: 10, borderWidth: 1, borderColor: 'white', borderRadius: 80 }}

@@ -52,7 +52,7 @@ const Results = (props) => {
 
                 <View style={screensStyles.ScreenMainPage}>
 
-                    <Text style={{ color: 'white', fontSize: 40, textAlign: 'center', padding: 20 }} >Results</Text>
+                    <Text style={{ fontSize: 40, textAlign: 'center', padding: 20, marginTop: 20 }} >Results</Text>
                     <View style={[screensStyles.ScreenButtom, { alignItems: 'center' }]}>
                         <View style={{ flex: 1 }}>
 
