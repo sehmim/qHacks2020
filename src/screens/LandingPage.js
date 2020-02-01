@@ -23,22 +23,32 @@ if (!firebase.apps.length) {
 
 const LandingPage = (props) => {
 
+    const [isLoading, setIsLoading] = React.useState(true)
     const { navigate } = props.navigation;
+
+    setTimeout(() => { setIsLoading(false); }, 4000);
 
     return (
         <>
-        <View style={styles.ScreenWrapper}>
-            <View style={styles.ScreenMainPage}>
-                <View style={{backgroundColor: "red", width: '100%', height: 200}}>
-                    <Text>loool</Text>
-                </View>
+            <View style={styles.ScreenWrapper}>
+                {
+                    isLoading ?
+                        <Text>Gif</Text>
+                        :
+                        <>
+                            <View style={styles.ScreenMainPage}>
+                                <View style={{ backgroundColor: "red", width: '100%', height: 200 }}>
+                                    <Text>loool</Text>
+                                </View>
+                            </View>
+                            <View style={styles.ScreenButtom}>
+                                <TouchableOpacity style={styles.Button} onPress={() => navigate('Form')}>
+                                    <Text style={styles.ButtonText}>Get Started</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </>
+                }
             </View>
-            <View style={styles.ScreenButtom}>
-                <TouchableOpacity style={styles.Button} onPress={() => navigate('Form')}>
-                    <Text style={styles.ButtonText}>Get Started</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
         </>
     )
 }
