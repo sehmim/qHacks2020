@@ -1,0 +1,14 @@
+###
+post https://insurance-flask.appspot.com/postjson
+Content-Type: application/json
+
+{
+    "gender": "male",
+    "age": "20",
+    "city": "Toronto",
+    "year": "2018",
+    "make": "Ford",
+    "model": "Fiesta",
+    "new_used": "used",
+    "dist": "20000"
+}

@@ -39,7 +39,7 @@ const ScreenLayout = StyleSheet.create({
     },
     ButtonText: {
         alignItems: 'center',
-        fontFamily: 'monospace'
+        // fontFamily: 'monospace'
     },
     statusBar: {
         height: Constants.statusBarHeight,
