@@ -1,7 +1,20 @@
 import { StyleSheet } from 'react-native';
 
 const ScreenLayout = StyleSheet.create({
+    StartScreenBackground: {
+        position: "absolute",
+        zIndex: 1,
+        width: "100%",
+        backgroundColor: "#70CE9B",
+        height: "100%",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+    },
     ScreenWrapper: {
+        position: "relative",
+        zIndex: 2,
         flex: 7,
         justifyContent: 'center',
         alignItems: 'center',
