@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/andrewhocking/sandbox/qHacks2020/simple_flask"
+set -gx VIRTUAL_ENV "/Users/andrewhocking/sandbox/qHacks2020/flask/simple_flask"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
