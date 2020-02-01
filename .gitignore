@@ -1,4 +1,8 @@
 node_modules/**/*
+flask/insurance/bin/*
+flask/insurance/lib/*
+flask/lib/*
+flask/simple_flask/*
 .expo/*
 npm-debug.*
 *.jks
@@ -7,6 +11,7 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+*.pyc
 web-build/
 web-report/
 
@@ -14,3 +19,5 @@ web-report/
 .DS_Store
 
 Firebaseconfig.js
+node_modules
+flask/.vscode/settings.json
