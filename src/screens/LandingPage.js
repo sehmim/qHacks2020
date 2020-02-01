@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, Image, StyleSheet } from 'react-native'
 
 import * as firebase from 'firebase';
 import { firebaseConfig } from '../../Firebaseconfig'
@@ -25,17 +25,58 @@ if (!firebase.apps.length) {
 const LandingPage = (props) => {
 
     const { navigate } = props.navigation;
+    const [isLoading, setIsLoading] = React.useState(true);
+
+    setTimeout(() => { setIsLoading(false); }, 4000);
+
 
     return (
-        <View style={{ flex: 6 }}>
-            <Text style={{ flex: 5 }}>LandingPage</Text>
-            <Button
-                style={{}}
-                title="Get Started"
-                onPress={() => navigate('Form')}>
-            </Button>
+        <View style={styles.container}>
+            {
+                isLoading ?
+                    <Image
+                        style={styles.logo}
+                        source={{ uri: 'https://media2.giphy.com/media/kVlXwd6iaE33q/source.gif' }}
+                    /> :
+                    <>
+                        <Text style={[styles.title, shadow]}>CarSurance</Text>
+                        <Button
+                            title="Get Started"
+                            onPress={() => navigate('Form')}>
+                        </Button>
+                    </>
+            }
         </View>
     )
 }
+
+const shadow = {
+    shadowColor: '#30C1DD',
+    shadowRadius: 10,
+    shadowOpacity: 0.6,
+    elevation: 8,
+    shadowOffset: {
+        width: 0,
+        height: 4
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgb(14,198,221)',
+    },
+    logo: {
+        width: 500,
+        height: 400,
+    },
+    title: {
+        color: 'white',
+        fontSize: 60,
+        padding: 20
+    }
+});
 
 export default LandingPage

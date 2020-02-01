@@ -12,7 +12,14 @@ const AppStack = createStackNavigator(
     LandingPage: {
       screen: LandingPage,
       navigationOptions: {
-        headerLeft: null
+        header: null,
+        headerLeft: null,
+        headerStyle: {
+          backgroundColor: 'rgb(96,188,250)',
+        },
+        headerTitleStyle: {
+          color: 'white'
+        }
       },
     },
     Form: {
