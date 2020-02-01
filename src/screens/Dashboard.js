@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-import { firebaseConfig } from '@/Firebaseconfig'
+import { firebaseConfig } from '/FirebaseConfig.js'
 
 const FIREBASE_CONFIG = {
     apiKey: firebaseConfig.API_KEY,
