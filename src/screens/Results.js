@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native'
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, SafeAreaView, ActivityIndicator } from 'react-native'
 import Constants from 'expo-constants';
 import screensStyles from '../styles/ScreensStyles';
 import { MyCard } from '../components/MyCard';
@@ -48,17 +48,18 @@ const Results = (props) => {
     const payload = JSON.stringify(props.navigation.getParam('inputData', 'NO-Data'))
 
     const [dataFromServer, setDataFromServer] = useState({ data: null, loading: true })
-    const baseURL = 'https://insurance-flask.appspot.com/postjson';
+    // const baseURL = 'https://carsurance.appspot.com/postjson';
+    const baseURL = 'http://localhost:5000/postjson/';
+
 
     useEffect(() => {
         axios.post(baseURL, payload).then((res) => {
             const newData = res.data.sort((a, b) => {
                 var x = a.quote; var y = b.quote;
                 return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-            });;
+            })
             setDataFromServer({ data: newData, loading: false })
-
-        })
+        }).catch((err) => console.log(err))
     }, [])
 
     const onSelect = React.useCallback(({ name, confidence, quote, onSelect, selected, uri }) => {
@@ -66,7 +67,7 @@ const Results = (props) => {
     }, [])
 
     return (
-        dataFromServer.loading ? <View><Text>Loading..... </Text></View> :
+        dataFromServer.loading ? <View style={[styles.container, styles.horizontal]}><ActivityIndicator size="large" color="#0000ff"></ActivityIndicator></View> :
 
             <>
                 <View style={screensStyles.ScreenWrapper}>
@@ -110,6 +111,15 @@ const styles = StyleSheet.create({
     statusBar: {
         height: Constants.statusBarHeight,
     },
+    container: {
+        flex: 1,
+        justifyContent: 'center'
+    },
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10
+    }
 });
 
 export default Results
