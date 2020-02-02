@@ -106,11 +106,11 @@ const FormPage = ({ navigation }) => {
             case 1:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        {/* <Image source={require('../styles/make.png')} style={{ width: 300, height: "28%", position: "absolute", top: "15%" }} /> */}
+                        <Image source={require('../styles/make.png')} style={{ width: 300, height: "28%", position: "absolute", top: "15%" }} />
                         <View>
                             <Text style={styles.formLabel}>Make: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                                <TextInput
+                                <Input
                                     autoFocus={true}
                                     placeholder='Honda'
                                     onChangeText={(text) => handleMakeChange(text)}
@@ -124,11 +124,11 @@ const FormPage = ({ navigation }) => {
             case 2:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        {/* <Image source={require('../styles/model.png')} style={{ width: "100%", height: "19%", position: "absolute", top: "20%" }} /> */}
+                        <Image source={require('../styles/model.png')} style={{ width: "100%", height: "19%", position: "absolute", top: "20%" }} />
                         <View>
                             <Text style={styles.formLabel}>Model: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                                <TextInput
+                                <Input
                                     placeholder='Civic'
                                     autoFocus={true}
                                     onChangeText={(text) => handleModelChange(text)}
@@ -219,7 +219,7 @@ const FormPage = ({ navigation }) => {
             case 7:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        {/* <Image source={require('../styles/gender.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "15%" }} /> */}
+                        <Image source={require('../styles/gender.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "15%" }} />
                         <View>
                             <Text style={styles.formLabel}>Gender: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
@@ -237,7 +237,7 @@ const FormPage = ({ navigation }) => {
             case 8:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        {/* <Image source={require('../styles/is_used.png')} style={{ width: Platform.OS === "android" ? "83%" : 300, height: "19%", position: "absolute", top: "15%" }} /> */}
+                        <Image source={require('../styles/is_used.png')} style={{ width: Platform.OS === "android" ? "83%" : 300, height: "19%", position: "absolute", top: "15%" }} />
                         <Text style={styles.formLabel}>Condition of your car: </Text>
                         <RadioForm
                             style={styles.RadioButton}

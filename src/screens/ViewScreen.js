@@ -83,19 +83,17 @@ const ViewScreen = (props) => {
         <View style={ScreensStyles.ScreenWrapper}>
             {/* <View style={styles.statusBar} /> */}
 
-            <Text style={{ fontSize: 40 }} >{name.replace(/^"|"$/g, '')}</Text>
-            <Image
-                style={{ width: 380, height: 300, margin: 10 }}
-                resizeMode="cover"
-                source={{ uri: URI }}
-            />
+            <Text style={{ fontSize: 40, marginBottom: 60 }} >{name.replace(/^"|"$/g, '')}</Text>
+            <Image source={require('../styles/money.png')} style={{ width: 300, height: "28%", marginTop: 50, marginBottom: 20 }} />
             <View style={{ flexDirection: 'column' }}>
-                <Text style={{ fontSize: 20, margin: 5 }}>Quote: ${parseFloat(quote.replace(/^"|"$/g, '')).toFixed(2)}</Text>
-                <Text style={{ fontSize: 20, margin: 5 }}>Probability: {parseFloat(confidence.replace(/^"|"$/g, '')).toFixed(2) * 100}%</Text>
-                <TouchableOpacity style={styles.Button} onPress={() => Linking.openURL(`tel:6479119111`)
+                <View style={{flexDirection: "row", marginTop: 70}}>
+                    <Text style={{ fontSize: 20, margin: 5 }}>Quote: ${parseFloat(quote.replace(/^"|"$/g, '')).toFixed(2)}</Text>
+                    <Text style={{ fontSize: 20, margin: 5 }}>Probability: {parseFloat(confidence.replace(/^"|"$/g, '')).toFixed(2) * 100}%</Text>
+                </View>
+                <TouchableOpacity style={styles.Button, {marginTop: 20, marginLeft: 85}} onPress={() => Linking.openURL(`tel:6479119111`)
                 }>
                     <Image
-                        style={{ width: 90, height: 70, padding: 50, margin: 10, borderWidth: 1, borderColor: 'white', borderRadius: 80 }}
+                        style={{ width: 90, height: 70, padding: 50, margin: 10, borderWidth: 1, borderColor: 'black', borderRadius: 80 }}
                         resizeMode="cover"
                         source={{ uri: "https://images.vexels.com/media/users/3/135224/isolated/preview/ebc7e96c8c415344f98bfbacf964cb69-stroke-phone-call-sign-by-vexels.png" }}
                     />

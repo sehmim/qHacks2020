@@ -94,7 +94,7 @@ const Results = (props) => {
 
                             </View>
                             <TouchableOpacity
-                                style={[screensStyles.Button, { backgroundColor: 'rgb(14,198,221)', marginBottom: 30, marginTop: 30 }]}
+                                style={[screensStyles.Button, { backgroundColor: '#70CE9B', marginBottom: 30, marginTop: 30 }]}
                                 title="Submit"
                                 onPress={() => { navigate("LandingPage") }}>
                                 <Text>Re-calculate</Text>
