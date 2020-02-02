@@ -3,15 +3,6 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Linking } from 'react-
 import ScreensStyles from '../styles/ScreensStyles';
 import Constants from 'expo-constants';
 
-import {
-    LineChart,
-    BarChart,
-    PieChart,
-    ProgressChart,
-    ContributionGraph,
-    StackedBarChart
-} from "react-native-chart-kit";
-
 const TD = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Toronto-Dominion_Bank_logo.svg/400px-Toronto-Dominion_Bank_logo.svg.png"
 const SCOTIABANK = "https://www.underconsideration.com/brandnew/archives/scotiabank_icon.png"
 const RBC = "https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/RBC_Royal_Bank.svg/1200px-RBC_Royal_Bank.svg.png"
@@ -99,8 +90,8 @@ const ViewScreen = (props) => {
                 source={{ uri: URI }}
             />
             <View style={{ flexDirection: 'column' }}>
-                <Text style={{ fontSize: 20, margin: 5 }}>Quote: {quote.replace(/^"|"$/g, '')}</Text>
-                <Text style={{ fontSize: 20, margin: 5 }}>Probability: {confidence.replace(/^"|"$/g, '')}</Text>
+                <Text style={{ fontSize: 20, margin: 5 }}>Quote: ${parseFloat(quote).toFixed(2)}</Text>
+                <Text style={{ fontSize: 20, margin: 5 }}>Probability: {parseFloat(confidence.replace(/^"|"$/g, '')).toFixed(2) * 100}%</Text>
                 <TouchableOpacity style={styles.Button} onPress={() => Linking.openURL(`tel:6479119111`)
                 }>
                     <Image

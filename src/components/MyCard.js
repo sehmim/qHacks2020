@@ -48,8 +48,8 @@ export const MyCard = ({ name, confidence, quote, onSelect, selected }) => {
                             source={{ uri: URI }}
                         />
                         <View style={{ padding: 10 }}>
-                            <Text style={{ padding: 10 }}>Estimated Quote: ${quote}</Text>
-                            <Text style={{ padding: 10 }}>Possibility: {confidence}%</Text>
+                            <Text style={{ padding: 10 }}>Estimated Quote: ${parseFloat(quote).toFixed(2)}</Text>
+                            <Text style={{ padding: 10 }}>Possibility: {parseFloat(confidence).toFixed(2) * 100}%</Text>
                         </View>
                     </View>
                 }
