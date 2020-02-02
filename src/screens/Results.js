@@ -61,6 +61,7 @@ const Results = (props) => {
                                     data={BANKS}
                                     renderItem={({ item }) =>
                                         <MyCard
+                                            key={item.name}
                                             uri={item.uri}
                                             name={item.name}
                                             confidence={item.confidence}

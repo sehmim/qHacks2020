@@ -57,12 +57,15 @@ const ScreenLayout = StyleSheet.create({
         width: 300,
         height: 50,
     },
-    formLebel: {
+    formLabel: {
         justifyContent: 'flex-start',
         textAlign: 'left',
         fontSize: 10,
         paddingLeft: 5,
-
+    },
+    RadioButton: {
+        // flexDirection: "row",
+        padding:25,
     }
 });
 
