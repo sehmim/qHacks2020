@@ -231,11 +231,12 @@ const FormPage = ({ navigation }) => {
                                 handleRadioButtons(value)
                             }}
                         />
-                        <Button
+                        <TouchableOpacity
                             style={[screensStyles.Button, { backgroundColor: 'rgb(14,198,221)' }]}
                             title="Submit"
                             onPress={sendData}>
-                        </Button>
+                            <Text>Submit</Text>
+                        </TouchableOpacity>
                     </View>
                 )
         }
