@@ -63,6 +63,8 @@ const FormPage = ({ navigation }) => {
         setMake(currentMake);
     }
 
+    const [focus, setFocus] = useState(true);
+
     const handleModelChange = (currentModel) => {
         setModel(currentModel);
     }
@@ -92,7 +94,10 @@ const FormPage = ({ navigation }) => {
     }
 
     const handleSubmit = (currentIndex) => {
-        setIdIndex(currentIndex + 1);
+        setFocus(true)
+        setTimeout(() => {
+            setIdIndex(currentIndex + 1);
+        }, 100)
     }
 
     const renderInput = (idIndex) => {
@@ -105,8 +110,8 @@ const FormPage = ({ navigation }) => {
                             <Text style={styles.formLabel}>Make: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
+                                    autoFocus={focus}
                                     placeholder='Honda'
-                                    autoFocus={true}
                                     onChangeText={(text) => handleMakeChange(text)}
                                     value={make}
                                     onSubmitEditing={() => handleSubmit(idIndex)}
@@ -123,8 +128,8 @@ const FormPage = ({ navigation }) => {
                             <Text style={styles.formLabel}>Model: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
+                                    autoFocus={focus}
                                     placeholder='Civic'
-                                    autoFocus={true}
                                     onChangeText={(text) => handleModelChange(text)}
                                     value={model}
                                     onSubmitEditing={() => handleSubmit(idIndex)}
@@ -137,13 +142,15 @@ const FormPage = ({ navigation }) => {
             case 3:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/model.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "19%", position: "absolute", top: "20%" }} />
+                        <Image source={require('../styles/year.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "23%", position: "absolute", top: "15%" }} />
                         <View>
-                            <Text style={styles.formLabel}>Year: </Text>
+                            <Text style={styles.formLabel}>Year of Purchase: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
-                                    placeholder='Year'
-                                    autoFocus={true}
+                                    placeholder='2010'
+                                    autoFocus={focus}
+                                    keyboardType="number-pad"
+                                    returnKeyType="done"
                                     onChangeText={(text) => handleYearChange(text)}
                                     value={year}
                                     onSubmitEditing={() => handleSubmit(idIndex)}
@@ -156,63 +163,75 @@ const FormPage = ({ navigation }) => {
                 return (
                     <View style={styles.ScreenWrapper}>
                         <Image source={require('../styles/distance.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "19%", position: "absolute", top: "20%" }} />
-                        <Text style={styles.formLabel}>Distance travelled: </Text>
-                        <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                            <Input
-                                placeholder='40,000km'
-                                autoFocus={true}
-                                onChangeText={(text) => handleAverageDistanceChange(text)}
-                                value={vehicleDistance}
-                                onSubmitEditing={() => handleSubmit(idIndex)}
-                            />
+                        <View>
+                            <Text style={styles.formLabel}>Distance travelled: </Text>
+                            <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                                <Input
+                                    placeholder='40,000km'
+                                    autoFocus={true}
+                                    keyboardType="number-pad"
+                                    returnKeyType="done"
+                                    onChangeText={(text) => handleAverageDistanceChange(text)}
+                                    value={vehicleDistance}
+                                    onSubmitEditing={() => handleSubmit(idIndex)}
+                                />
+                            </View>
                         </View>
                     </View>
                 )
             case 5:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/location.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "15%" }} />
-                        <Text style={styles.formLabel}>Location: </Text>
-                        <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                            <Input
-                                placeholder='Toronto'
-                                autoFocus={true}
-                                onChangeText={(text) => handleLocationChange(text)}
-                                value={location}
-                                onSubmitEditing={() => handleSubmit(idIndex)}
-                            />
+                        <Image source={require('../styles/location.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "12%" }} />
+                        <View>
+                            <Text style={styles.formLabel}>Location: </Text>
+                            <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                                <Input
+                                    placeholder='Toronto'
+                                    autoFocus={true}
+                                    onChangeText={(text) => handleLocationChange(text)}
+                                    value={location}
+                                    onSubmitEditing={() => handleSubmit(idIndex)}
+                                />
+                            </View>
                         </View>
                     </View>
                 )
             case 6:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/age.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "35%", position: "absolute", top: "8%" }} />
-                        <Text style={styles.formLabel}>Age: </Text>
-                        <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                            <Input
-                                placeholder='Driver Age'
-                                autoFocus={true}
-                                onChangeText={(text) => handleAgeChange(text)}
-                                value={age}
-                                onSubmitEditing={() => handleSubmit(idIndex)}
-                            />
+                        <Image source={require('../styles/age.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "35%", position: "absolute", top: "7%" }} />
+                        <View>
+                            <Text style={styles.formLabel}>Age: </Text>
+                            <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                                <Input
+                                    placeholder="Driver's Age"
+                                    keyboardType="number-pad"
+                                    returnKeyType="done"
+                                    autoFocus={true}
+                                    onChangeText={(text) => handleAgeChange(text)}
+                                    value={age}
+                                    onSubmitEditing={() => handleSubmit(idIndex)}
+                                />
+                            </View>
                         </View>
                     </View>
                 )
             case 7:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/age.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "35%", position: "absolute", top: "8%" }} />
-                        <Text style={styles.formLabel}>Gender: </Text>
-                        <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                            <Input
-                                placeholder='Gender'
-                                autoFocus={true}
-                                onChangeText={(text) => handleGenderChange(text)}
-                                value={gender}
-                                onSubmitEditing={() => handleSubmit(idIndex)}
-                            />
+                        <Image source={require('../styles/gender.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "15%" }} />
+                        <View>
+                            <Text style={styles.formLabel}>Gender: </Text>
+                            <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                                <Input
+                                    placeholder='M / F'
+                                    autoFocus={true}
+                                    onChangeText={(text) => handleGenderChange(text)}
+                                    value={gender}
+                                    onSubmitEditing={() => handleSubmit(idIndex)}
+                                />
+                            </View>
                         </View>
                     </View>
                 )
@@ -231,20 +250,18 @@ const FormPage = ({ navigation }) => {
                                 handleRadioButtons(value)
                             }}
                         />
-                        <Button
+                        <TouchableOpacity
                             style={[screensStyles.Button, { backgroundColor: 'rgb(14,198,221)' }]}
                             title="Submit"
                             onPress={sendData}>
-                        </Button>
+                            <Text>Submit</Text>
+                        </TouchableOpacity>
                     </View>
                 )
         }
     }
     return (
         <View style={[styles.FormPageContainer, { alignItems: 'center' }]}>
-            <Text>
-                Counting {idIndex}/7
-                </Text>
             <KeyboardAvoidingView style={{}}>
                 {renderInput(idIndex)}
             </KeyboardAvoidingView>

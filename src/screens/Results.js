@@ -106,6 +106,11 @@ const Results = (props) => {
     )
 }
 
+const styles = StyleSheet.create({
+    statusBar: {
+        height: Constants.statusBarHeight,
+    },
+});
 
 export default Results
 
