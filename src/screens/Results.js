@@ -51,8 +51,7 @@ const Results = (props) => {
     const { navigate } = props.navigation
 
     const dataFromBackEnd = JSON.stringify(props.navigation.getParam('data', 'NO-Data'))
-
-    console.log(("ANDREW STUFF ---->", dataFromBackEnd))
+    console.log(dataFromBackEnd)
 
     const onSelect = React.useCallback(({ name, confidence, quote, onSelect, selected, uri }) => {
         navigate('ViewScreen', { name, confidence, quote, uri })
@@ -70,7 +69,7 @@ const Results = (props) => {
 
                             <SafeAreaView style={{ width: 400 }}>
                                 <FlatList
-                                    data={dataFromBackEnd}
+                                    data={BANKS}
                                     renderItem={({ item }) =>
                                         <MyCard
                                             uri={item.uri}
@@ -80,6 +79,7 @@ const Results = (props) => {
                                             onSelect={onSelect}
                                             selected={item.selected}
                                         />}
+                                    keyExtractor={item => item.name}
                                 />
                             </SafeAreaView>
 
@@ -98,6 +98,11 @@ const Results = (props) => {
     )
 }
 
+const styles = StyleSheet.create({
+    statusBar: {
+        height: Constants.statusBarHeight,
+    },
+});
 
 export default Results
 
