@@ -6,7 +6,7 @@ import { Card, ListItem, Button, Icon, Image, } from 'react-native-elements'
 const TD = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Toronto-Dominion_Bank_logo.svg/400px-Toronto-Dominion_Bank_logo.svg.png"
 const SCOTIABANK = "https://www.underconsideration.com/brandnew/archives/scotiabank_icon.png"
 const AVIVA = "https://london.theaisummit.com/wp-content/uploads/2018/05/Lead-Data-Scientist-Aviva.png"
-const CAA = "https://nicolinsurance.com/wp-content/uploads/2019/08/Logo-CAA-2019.jpg"
+const SUNLIFE = "https://broadwayyxe.com/wp-content/uploads/2018/05/Sun-Life-Square-pdf.jpg"
 const INTACT = "https://pbs.twimg.com/profile_images/612975163240398848/hBYzphKX.jpg"
 
 
@@ -23,8 +23,8 @@ export const MyCard = ({ name, confidence, quote, onSelect, selected }) => {
         case "AVIVA":
             URI = AVIVA
             break;
-        case "CAA":
-            URI = CAA
+        case "SUNLIFE":
+            URI = SUNLIFE
             break;
         case "INTACT":
             URI = INTACT

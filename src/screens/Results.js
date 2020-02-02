@@ -25,7 +25,7 @@ const BANKS = [
     },
     {
         id: '4',
-        name: 'CAA',
+        name: 'SUNLIFE',
         confidence: '88',
         quote: '4'
     },

@@ -46,9 +46,6 @@ const FormPage = ({ navigation }) => {
             }
             const newData = await inputs.postInputs(inputData);
             setData(newData);
-
-            console.log("inputs", data);
-
             navigate("Results", { data });
 
         }
@@ -250,26 +247,6 @@ const FormPage = ({ navigation }) => {
             </KeyboardAvoidingView>
         </View>
     )
-}
-
-const InputHelper = (setInputHook, input, placeholder) => {
-    return (
-        <>
-
-            <View style={screensStyles.FormPageInput}>
-                <Input
-                    placeholder={placeholder}
-                    onChangeText={(text) => setInputHook(text)}
-                    value={input} />
-            </View>
-            <View style={{ margin: 10 }}>
-                <TouchableOpacity style={styles.Button} onPress={() => navigate('Results')}>
-                    <Text style={styles.ButtonText}>Next</Text>
-                </TouchableOpacity>
-
-            </View>
-
-        </>)
 }
 
 export default FormPage
