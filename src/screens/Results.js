@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native'
 import Constants from 'expo-constants';
 import screensStyles from '../styles/ScreensStyles';
 import { MyCard } from '../components/MyCard';
+import axios from 'axios';
 
 const BANKS = [
     {
@@ -41,60 +42,67 @@ const BANKS = [
 
 const Results = (props) => {
 
-    BANKS.sort((a, b) => {
-        var x = a.quote; var y = b.quote;
-        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    });
-
-
 
     const { navigate } = props.navigation
 
-    const dataFromBackEnd = JSON.stringify(props.navigation.getParam('data', 'NO-Data'))
+    const payload = JSON.stringify(props.navigation.getParam('inputData', 'NO-Data'))
 
-    console.log(("ANDREW STUFF ---->", dataFromBackEnd))
+    const [dataFromServer, setDataFromServer] = useState({ data: null, loading: true })
+    const baseURL = 'https://insurance-flask.appspot.com/postjson';
+
+    useEffect(() => {
+        axios.post(baseURL, payload).then((res) => {
+            const newData = res.data.sort((a, b) => {
+                var x = a.quote; var y = b.quote;
+                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+            });;
+            setDataFromServer({ data: newData, loading: false })
+
+        })
+    }, [])
 
     const onSelect = React.useCallback(({ name, confidence, quote, onSelect, selected, uri }) => {
         navigate('ViewScreen', { name, confidence, quote, uri })
     }, [])
 
     return (
-        <>
-            <View style={screensStyles.ScreenWrapper}>
+        dataFromServer.loading ? <View><Text>Loading..... </Text></View> :
 
-                <View style={screensStyles.ScreenMainPage}>
+            <>
+                <View style={screensStyles.ScreenWrapper}>
 
-                    <Text style={{ fontSize: 40, textAlign: 'center', padding: 20, marginTop: 20 }} >Results</Text>
-                    <View style={[screensStyles.ScreenButtom, { alignItems: 'center' }]}>
-                        <View style={{ flex: 1 }}>
+                    <View style={screensStyles.ScreenMainPage}>
 
-                            <SafeAreaView style={{ width: 400 }}>
-                                <FlatList
-                                    data={dataFromBackEnd}
-                                    renderItem={({ item }) =>
-                                        <MyCard
-                                            uri={item.uri}
-                                            name={item.name}
-                                            confidence={item.confidence}
-                                            quote={item.quote}
-                                            onSelect={onSelect}
-                                            selected={item.selected}
-                                        />}
-                                />
-                            </SafeAreaView>
+                        <Text style={{ fontSize: 40, textAlign: 'center', padding: 20, marginTop: 20 }} >Results</Text>
+                        <View style={[screensStyles.ScreenButtom, { alignItems: 'center' }]}>
+                            <View style={{ flex: 1 }}>
+                                <SafeAreaView style={{ width: 400 }}>
+                                    <FlatList
+                                        data={dataFromServer.data}
+                                        renderItem={({ item }) =>
+                                            <MyCard
+                                                uri={item.uri}
+                                                name={item.name}
+                                                confidence={item.confidence}
+                                                quote={item.quote}
+                                                onSelect={onSelect}
+                                                selected={item.selected}
+                                            />}
+                                    />
+                                </SafeAreaView>
 
+                            </View>
+                            <TouchableOpacity
+                                style={[screensStyles.Button, { backgroundColor: 'rgb(14,198,221)', marginBottom: 30, marginTop: 30 }]}
+                                title="Submit"
+                                onPress={() => { navigate("LandingPage") }}>
+                                <Text>Re-calculate</Text>
+                            </TouchableOpacity>
                         </View>
-                        <TouchableOpacity
-                            style={[screensStyles.Button, { backgroundColor: 'rgb(14,198,221)', marginBottom: 30, marginTop: 30 }]}
-                            title="Submit"
-                            onPress={() => { navigate("LandingPage") }}>
-                            <Text>Re-calculate</Text>
-                        </TouchableOpacity>
                     </View>
-                </View>
 
-            </View>
-        </>
+                </View>
+            </>
     )
 }
 
