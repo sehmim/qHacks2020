@@ -6,31 +6,38 @@ import { MyCard } from '../components/MyCard';
 
 const BANKS = [
     {
+        id: '1',
         name: 'TD BANK',
         confidence: '88',
         quote: '1'
     },
     {
-        name: 'CIBC',
+        id: '2',
+        name: 'AVIVA',
         confidence: '88',
         quote: '2'
     },
     {
+        id: '3',
         name: 'SCOTIABANK',
         confidence: '88',
         quote: '3'
     },
     {
-        name: 'BMO',
+        id: '4',
+        name: 'SUNLIFE',
         confidence: '88',
         quote: '4'
     },
     {
-        name: 'RBC',
+        id: '5',
+        name: 'INTACT',
         confidence: '88',
         quote: '1'
     },
 ]
+
+
 
 const Results = (props) => {
 
@@ -42,6 +49,10 @@ const Results = (props) => {
 
 
     const { navigate } = props.navigation
+
+    const dataFromBackEnd = JSON.stringify(props.navigation.getParam('data', 'NO-Data'))
+    console.log(dataFromBackEnd)
+
     const onSelect = React.useCallback(({ name, confidence, quote, onSelect, selected, uri }) => {
         navigate('ViewScreen', { name, confidence, quote, uri })
     }, [])
