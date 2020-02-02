@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import numpy as np
 import pandas as pd
 from flask_cors import CORS
+import tensorflow as tf
 
 
 app = Flask(__name__)
@@ -31,26 +32,19 @@ def predict(data):
 
 @app.route('/postjson', methods=['POST'])
 def postJsonHandler():
-    print(request.is_json)
+    # print(request.is_json)
     content = request.get_json(force=True)
-    gender = content['gender'].lower()
-    age = int(content['age'])
-    city = content['city'].lower()
-    year = int(content['year'])
-    make = content['make'].lower()
-    model = content['model'].lower()
-    dist = int(content['dist'])
-    new_used = content['new_used'].lower()
+    gender = content['gender']
+    age = content['age']
+    city = content['city']
+    year = content['year']
+    make = content['make']
+    model = content['model']
+    dist = content['dist']
+    new_used = content['new_used']
+    # print(jsonify(content))
 
-    if gender[0] == 'm':
-        gender = 1
-    else:
-        gender = 0
-
-    age  # how to turn this into 1s and 0s???
-
-    canada_cities = pd.read_csv(
-        'list-of-cities-in-canada-csv.csv', names=['city'])
+    canada_cities = pd.read_csv('list-of-cities-in-canada-csv.csv', names=['city'])
     l = list(pd.get_dummies(canada_cities, drop_first=True).columns)
     l.sort()
     k = {}
@@ -62,11 +56,11 @@ def postJsonHandler():
         if (city == c):
             zero_list[k[c]-1] = 1
 
-    zero_list.insert(0, (year/2020.0))
-    zero_list.insert(0, (dist/25000.0))
-    zero_list.insert(0, (age/100.0))
-    zero_list.append(gender)
-
+    if gender[0] == 'm':
+        gender = 1
+    else:
+        gender = 0
+    
     makes = [
         'audi',
         'bmw',
@@ -79,6 +73,7 @@ def postJsonHandler():
         'tesla',
         'toyota'
     ]
+
     for m in makes:
         if (make == m):
             zero_list.append(1)
@@ -90,41 +85,45 @@ def postJsonHandler():
     else:
         zero_list.append(0)
 
-    print(zero_list)
-    print(len(zero_list))
 
-    return predict(zero_list) + "\n\n" + jsonify(zero_list)
+    zero_list.insert(0, (float(year)/2020.0))
+    zero_list.insert(0, (float(dist)/25000.0))
+    zero_list.insert(0, (float(age)/100.0))
+    zero_list.append(gender)
 
+    # load models
+    model_quote1 = tf.keras.models.load_model('company_1_model_quote.h5')
+    model_conf1 = tf.keras.models.load_model('company_1_model_conf.h5')
+    model_quote2 = tf.keras.models.load_model('company_2_model_quote.h5')
+    model_conf2 = tf.keras.models.load_model('company_2_model_conf.h5')
+    model_quote3 = tf.keras.models.load_model('company_3_model_quote.h5')
+    model_conf3 = tf.keras.models.load_model('company_3_model_conf.h5')
+    model_quote4 = tf.keras.models.load_model('company_4_model_quote.h5')
+    model_conf4 = tf.keras.models.load_model('company_4_model_conf.h5')
+    model_quote5 = tf.keras.models.load_model('company_5_model_quote.h5')
+    model_conf5 = tf.keras.models.load_model('company_5_model_conf.h5')
 
-# app.run(host='0.0.0.0', port=8090)
+    lst = []
+    # test model on a value
+    quote_prediction = model_quote1.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    confidence_prediction = model_conf1.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    lst.append({'id': '1', 'name': 'TD BANK', 'confidence': str((1 - confidence_prediction[0][0][0])), 'quote': str(quote_prediction[0][0][0])})
+    
+    quote_prediction = model_quote2.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    confidence_prediction = model_conf2.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    lst.append({'id': '2', 'name': 'AVIVA', 'confidence': str((1 - confidence_prediction[0][0][0])), 'quote': str(quote_prediction[0][0][0])})
 
-# if __name__=='__main__':
-#     app.run(debug=True)
+    quote_prediction = model_quote3.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    confidence_prediction = model_conf3.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    lst.append({'id': '3', 'name': 'SCOTIABANK', 'confidence': str((1 - confidence_prediction[0][0][0])), 'quote': str(quote_prediction[0][0][0])})
+    
+    quote_prediction = model_quote4.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    confidence_prediction = model_conf4.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    lst.append({'id': '4', 'name': 'SUNLIFE', 'confidence': str((1 - confidence_prediction[0][0][0])), 'quote': str(quote_prediction[0][0][0])})
+   
+    quote_prediction = model_quote5.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    confidence_prediction = model_conf5.predict(np.reshape(np.array(zero_list), (1, 1, -1)))
+    lst.append({'id': '5', 'name': 'INTACT', 'confidence': str((1 - confidence_prediction[0][0][0])), 'quote': str(quote_prediction[0][0][0])})
 
-
-# WORKING CODE:
-# @app.route('/postjson', methods=['POST'])
-# def postJsonHandler():
-#     print(request.is_json)
-#     content = request.get_json(force=True)
-#     gender = content['gender']
-#     age = content['age']
-#     city = content['city']
-#     year = content['year']
-#     make = content['make']
-#     model = content['model']
-#     dist = content['dist']
-#     new_used = content['new_used']
-#     string = "You are a " + age + " year old " + gender + " who drives a " + \
-#         new_used + " " + year + " " + make + " " + model + " for " + \
-#         dist + " km every year in " + city + "."
-#     print(jsonify(content))
-
-#     lst = []
-#     lst.append({'id': '1', 'name': 'TD BANK', 'confidence': '93', 'quote': '436.25'})
-#     lst.append({'id': '2', 'name': 'AVIVA', 'confidence': '75', 'quote': '436.25'})
-#     lst.append({'id': '3', 'name': 'SCOTIABANK', 'confidence': '84', 'quote': '436.25'})
-#     lst.append({'id': '4', 'name': 'SUNLIFE', 'confidence': '65', 'quote': '436.25'})
-#     lst.append({'id': '5', 'name': 'INTACT', 'confidence': '83', 'quote': '436.25'})
-
-#     return jsonify(lst)
+    return jsonify(lst)
+ 
