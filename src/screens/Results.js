@@ -48,7 +48,7 @@ const Results = (props) => {
     const payload = JSON.stringify(props.navigation.getParam('inputData', 'NO-Data'))
 
     const [dataFromServer, setDataFromServer] = useState({ data: null, loading: true })
-    const baseURL = 'https://insurance-flask.appspot.com/postjson';
+    const baseURL = 'https://carsurance.appspot.com/postjson';
     // const baseURL = 'http://localhost:5000/postjson/';
 
 
