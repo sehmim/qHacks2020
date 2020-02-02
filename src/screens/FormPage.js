@@ -50,7 +50,8 @@ const FormPage = ({ navigation }) => {
             }
             const newData = await inputs.postInputs(inputData);
             setData(newData);
-            navigate("Results", { data });
+
+            navigate("Results", { data: data });
 
         }
         catch (ex) {
@@ -232,12 +233,11 @@ const FormPage = ({ navigation }) => {
                                 handleRadioButtons(value)
                             }}
                         />
-                        <TouchableOpacity
+                        <Button
                             style={[screensStyles.Button, { backgroundColor: 'rgb(14,198,221)' }]}
                             title="Submit"
                             onPress={sendData}>
-                            <Text>Submit</Text>
-                        </TouchableOpacity>
+                        </Button>
                     </View>
                 )
         }
