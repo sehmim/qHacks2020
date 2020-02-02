@@ -36,28 +36,26 @@ const FormPage = ({ navigation }) => {
     }
 
     const handleSendData = async (make, model, vehicleDistance, age, year, gender, location, isUsed) => {
-        try {
-            const inputData = {
-                gender,
-                age,
-                city: location,
-                year,
-                make,
-                model,
-                new_used: isUsed ? "New" : "Used",
-                dist: vehicleDistance,
-
-            }
-            const newData = await inputs.postInputs(inputData);
-            setData(newData);
-
-            navigate("Results", { data: data });
+        // try {
+        const inputData = {
+            gender,
+            age,
+            city: location,
+            year,
+            make,
+            model,
+            new_used: isUsed ? "New" : "Used",
+            dist: vehicleDistance,
 
         }
-        catch (ex) {
-            console.log(ex);
-        }
+        // inputs.postInputs(inputData).then((res));
+        // setData(newData);
+        navigate("Results", { inputData });
     }
+    // catch (ex) {
+    //     console.log(ex);
+    // }
+    // }
 
     const [idIndex, setIdIndex] = React.useState(1)
 
@@ -247,11 +245,12 @@ const FormPage = ({ navigation }) => {
                                 handleRadioButtons(value)
                             }}
                         />
-                        <Button
+                        <TouchableOpacity
                             style={[screensStyles.Button, { backgroundColor: 'rgb(14,198,221)' }]}
                             title="Submit"
                             onPress={sendData}>
-                        </Button>
+                            <Text>Submit</Text>
+                        </TouchableOpacity>
                     </View>
                 )
         }
