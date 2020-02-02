@@ -90,7 +90,7 @@ const ViewScreen = (props) => {
                 source={{ uri: URI }}
             />
             <View style={{ flexDirection: 'column' }}>
-                <Text style={{ fontSize: 20, margin: 5 }}>Quote: ${parseFloat(quote).toFixed(2)}</Text>
+                <Text style={{ fontSize: 20, margin: 5 }}>Quote: ${parseFloat(quote.replace(/^"|"$/g, '')).toFixed(2)}</Text>
                 <Text style={{ fontSize: 20, margin: 5 }}>Probability: {parseFloat(confidence.replace(/^"|"$/g, '')).toFixed(2) * 100}%</Text>
                 <TouchableOpacity style={styles.Button} onPress={() => Linking.openURL(`tel:6479119111`)
                 }>
