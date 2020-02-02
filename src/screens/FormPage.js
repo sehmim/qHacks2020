@@ -63,6 +63,8 @@ const FormPage = ({ navigation }) => {
         setMake(currentMake);
     }
 
+    const [focus, setFocus] = useState(true);
+
     const handleModelChange = (currentModel) => {
         setModel(currentModel);
     }
@@ -92,7 +94,10 @@ const FormPage = ({ navigation }) => {
     }
 
     const handleSubmit = (currentIndex) => {
-        setIdIndex(currentIndex + 1);
+        setFocus(true)
+        setTimeout(() => {
+            setIdIndex(currentIndex + 1);
+        }, 100)
     }
 
     const renderInput = (idIndex) => {
@@ -105,8 +110,8 @@ const FormPage = ({ navigation }) => {
                             <Text style={styles.formLabel}>Make: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
+                                    autoFocus={focus}
                                     placeholder='Honda'
-                                    autoFocus={true}
                                     onChangeText={(text) => handleMakeChange(text)}
                                     value={make}
                                     onSubmitEditing={() => handleSubmit(idIndex)}
@@ -123,8 +128,8 @@ const FormPage = ({ navigation }) => {
                             <Text style={styles.formLabel}>Model: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
+                                    autoFocus={focus}
                                     placeholder='Civic'
-                                    autoFocus={true}
                                     onChangeText={(text) => handleModelChange(text)}
                                     value={model}
                                     onSubmitEditing={() => handleSubmit(idIndex)}
@@ -143,7 +148,7 @@ const FormPage = ({ navigation }) => {
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
                                     placeholder='2010'
-                                    autoFocus={true}
+                                    autoFocus={focus}
                                     keyboardType="number-pad"
                                     returnKeyType="done"
                                     onChangeText={(text) => handleYearChange(text)}
@@ -200,7 +205,7 @@ const FormPage = ({ navigation }) => {
                             <Text style={styles.formLabel}>Age: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
-                                    placeholder='Driver Age'
+                                    placeholder="Driver's Age"
                                     keyboardType="number-pad"
                                     returnKeyType="done"
                                     autoFocus={true}
@@ -220,7 +225,7 @@ const FormPage = ({ navigation }) => {
                             <Text style={styles.formLabel}>Gender: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
-                                    placeholder='Gender'
+                                    placeholder='M / F'
                                     autoFocus={true}
                                     onChangeText={(text) => handleGenderChange(text)}
                                     value={gender}
@@ -257,9 +262,6 @@ const FormPage = ({ navigation }) => {
     }
     return (
         <View style={[styles.FormPageContainer, { alignItems: 'center' }]}>
-            <Text>
-                Counting {idIndex}/7
-                </Text>
             <KeyboardAvoidingView style={{}}>
                 {renderInput(idIndex)}
             </KeyboardAvoidingView>
