@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import inputs from '../services/inputs';
 import styles from '../styles/ScreensStyles';
 import { Input } from 'react-native-elements';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Picker, KeyboardAvoidingView, Image } from 'react-native'
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Picker, KeyboardAvoidingView, Image, Platform } from 'react-native'
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 
 import screensStyles from '../styles/ScreensStyles';
@@ -37,7 +37,11 @@ const FormPage = ({ navigation }) => {
         { label: 'Used', value: 1 }
     ];
 
-    const sendData = async (make, model, vehicleDistance, age, year, gender, location, isUsed) => {
+    const sendData = () => {
+        handleSendData(make, model, vehicleDistance, age, year, gender, location, isUsed);
+    }
+
+    const handleSendData = async (make, model, vehicleDistance, age, year, gender, location, isUsed) => {
         try {
             const inputData = {
                 gender,
@@ -52,6 +56,7 @@ const FormPage = ({ navigation }) => {
             }
             const newData = await inputs.postInputs(inputData);
             setData(newData);
+            console.log('newData', newData);
             console.log("inputs", data);
             navigate("Results");
 
@@ -124,6 +129,7 @@ const FormPage = ({ navigation }) => {
                     <View style={styles.ScreenWrapper}>
                         <Image source={require('../styles/model.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "19%", position: "absolute", top: "20%" }} />
                         <View>
+                            <Text style={styles.formLabel}>Model: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
                                     placeholder='Civic'
@@ -142,12 +148,13 @@ const FormPage = ({ navigation }) => {
                     <View style={styles.ScreenWrapper}>
                         <Image source={require('../styles/model.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "19%", position: "absolute", top: "20%" }} />
                         <View>
+                            <Text style={styles.formLabel}>Year: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
                                     placeholder='Year'
                                     autoFocus={true}
                                     onChangeText={(text) => handleYearChange(text)}
-                                    value={model}
+                                    value={year}
                                     onSubmitEditing={() => handleSubmit(idIndex)}
                                 />
                             </View>
@@ -158,6 +165,7 @@ const FormPage = ({ navigation }) => {
                 return (
                     <View style={styles.ScreenWrapper}>
                         <Image source={require('../styles/distance.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "19%", position: "absolute", top: "20%" }} />
+                        <Text style={styles.formLabel}>Distance travelled: </Text>
                         <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                             <Input
                                 placeholder='40,000km'
@@ -235,13 +243,11 @@ const FormPage = ({ navigation }) => {
                         <TouchableOpacity
                             style={[screensStyles.Button, { backgroundColor: 'rgb(14,198,221)' }]}
                             title="Submit"
-                            onPress={() => sendData(make, model, vehicleDistance, age, year, gender, location, isUsed)}>
+                            onPress={sendData}>
                             <Text>Submit</Text>
                         </TouchableOpacity>
                     </View>
                 )
-            default:
-                break;
         }
     }
     return (

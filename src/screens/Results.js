@@ -61,7 +61,6 @@ const Results = (props) => {
                                     data={BANKS}
                                     renderItem={({ item }) =>
                                         <MyCard
-                                            key={item.name}
                                             uri={item.uri}
                                             name={item.name}
                                             confidence={item.confidence}
@@ -69,7 +68,7 @@ const Results = (props) => {
                                             onSelect={onSelect}
                                             selected={item.selected}
                                         />}
-                                    keyExtractor={item => item.id}
+                                    keyExtractor={item => item.name}
                                 />
                             </SafeAreaView>
 

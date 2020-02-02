@@ -1,5 +1,5 @@
 ###
-post https://insurance-flask.appspot.com/postjson
+post https://carsurance.appspot.com/postjson
 Content-Type: application/json
 
 {
