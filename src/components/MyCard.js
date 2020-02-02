@@ -5,9 +5,9 @@ import { Card, ListItem, Button, Icon, Image, } from 'react-native-elements'
 
 const TD = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Toronto-Dominion_Bank_logo.svg/400px-Toronto-Dominion_Bank_logo.svg.png"
 const SCOTIABANK = "https://www.underconsideration.com/brandnew/archives/scotiabank_icon.png"
-const RBC = "https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/RBC_Royal_Bank.svg/1200px-RBC_Royal_Bank.svg.png"
-const BMO = "https://static.wixstatic.com/media/8d4aeb_de259a0bec09405cb391f1962a16368d~mv2.png/v1/fill/w_400,h_400,al_c,q_90/file.jpg"
-const CIBC = "https://upload.wikimedia.org/wikipedia/en/c/cf/CIBC_logo.svg"
+const AVIVA = "https://london.theaisummit.com/wp-content/uploads/2018/05/Lead-Data-Scientist-Aviva.png"
+const CAA = "https://nicolinsurance.com/wp-content/uploads/2019/08/Logo-CAA-2019.jpg"
+const INTACT = "https://pbs.twimg.com/profile_images/612975163240398848/hBYzphKX.jpg"
 
 
 export const MyCard = ({ name, confidence, quote, onSelect, selected }) => {
@@ -20,14 +20,14 @@ export const MyCard = ({ name, confidence, quote, onSelect, selected }) => {
         case "SCOTIABANK":
             URI = SCOTIABANK
             break;
-        case "RBC":
-            URI = RBC
+        case "AVIVA":
+            URI = AVIVA
             break;
-        case "BMO":
-            URI = BMO
+        case "CAA":
+            URI = CAA
             break;
-        case "CIBC":
-            URI = CIBC
+        case "INTACT":
+            URI = INTACT
             break;
         default:
             URI = "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fkurtbadenhausen%2Ffiles%2F2018%2F01%2Fbank.jpg";

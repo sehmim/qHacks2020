@@ -10,12 +10,12 @@ const BMO = "https://static.wixstatic.com/media/8d4aeb_de259a0bec09405cb391f1962
 const CIBC = "https://upload.wikimedia.org/wikipedia/en/c/cf/CIBC_logo.svg"
 
 const ViewScreen = (props) => {
+
     const { navigation } = props;
 
     const name = JSON.stringify(navigation.getParam('name', 'NO-Data'))
     const confidence = JSON.stringify(navigation.getParam('confidence', 'NO-Data'))
     const quote = JSON.stringify(navigation.getParam('quote', 'NO-Data'))
-    const uri = JSON.stringify(navigation.getParam('uri', 'NO-Data'))
 
 
     let URI;
@@ -51,7 +51,7 @@ const ViewScreen = (props) => {
                 source={{ uri: URI }}
             />
             <View style={{ flexDirection: 'column' }}>
-                <Text style={{ fontSize: 20, margin: 5, fontFamily: 'Iowan Old Style' }}>Quote: {quote.replace(/['"]+/g, '')}</Text>
+                <Text style={{ fontSize: 20, margin: 5 }}>Quote: {quote.replace(/['"]+/g, '')}</Text>
                 <Text style={{ fontSize: 20, margin: 5 }}>Probability: {confidence.replace(/['"]+/g, '')}</Text>
                 <TouchableOpacity style={styles.Button} onPress={() => alert("TO DO CALL")}>
                     <Image

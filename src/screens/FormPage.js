@@ -7,12 +7,6 @@ import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'reac
 
 import screensStyles from '../styles/ScreensStyles';
 
-const Imgs = [
-    '',
-    'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/access_account_99n5.svg',
-    'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/thought_process_67my.svg',
-    'https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/forgot_password_gi2d.svg'
-]
 
 const FormPage = ({ navigation }) => {
     const { navigate } = navigation
@@ -52,8 +46,10 @@ const FormPage = ({ navigation }) => {
             }
             const newData = await inputs.postInputs(inputData);
             setData(newData);
+
             console.log("inputs", data);
-            navigate("Results");
+
+            navigate("Results", { data });
 
         }
         catch (ex) {
@@ -256,5 +252,24 @@ const FormPage = ({ navigation }) => {
     )
 }
 
+const InputHelper = (setInputHook, input, placeholder) => {
+    return (
+        <>
+
+            <View style={screensStyles.FormPageInput}>
+                <Input
+                    placeholder={placeholder}
+                    onChangeText={(text) => setInputHook(text)}
+                    value={input} />
+            </View>
+            <View style={{ margin: 10 }}>
+                <TouchableOpacity style={styles.Button} onPress={() => navigate('Results')}>
+                    <Text style={styles.ButtonText}>Next</Text>
+                </TouchableOpacity>
+
+            </View>
+
+        </>)
+}
 
 export default FormPage
