@@ -12,7 +12,7 @@ const FormPage = ({ navigation }) => {
     const { navigate } = navigation
     const [isSubmit, setIsSubmit] = useState(true)
 
-    const [data, setData] = useState({});
+    const [active, setActive] = useState(true)
 
     const [isUsed, setIsUsed] = useState('')
     const [gender, setGender] = useState('')
@@ -62,6 +62,7 @@ const FormPage = ({ navigation }) => {
     const handleMakeChange = (currentMake) => {
         setMake(currentMake);
     }
+    
 
     const [focus, setFocus] = useState(true);
 
@@ -105,12 +106,12 @@ const FormPage = ({ navigation }) => {
             case 1:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/make.png')} style={{ width: Platform.OS === "android" ? "83%" : 300, height: "28%", position: "absolute", top: "15%" }} />
+                        {/* <Image source={require('../styles/make.png')} style={{ width: 300, height: "28%", position: "absolute", top: "15%" }} /> */}
                         <View>
                             <Text style={styles.formLabel}>Make: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                                <Input
-                                    autoFocus={focus}
+                                <TextInput
+                                    autoFocus={true}
                                     placeholder='Honda'
                                     onChangeText={(text) => handleMakeChange(text)}
                                     value={make}
@@ -123,13 +124,13 @@ const FormPage = ({ navigation }) => {
             case 2:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/model.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "19%", position: "absolute", top: "20%" }} />
+                        {/* <Image source={require('../styles/model.png')} style={{ width: "100%", height: "19%", position: "absolute", top: "20%" }} /> */}
                         <View>
                             <Text style={styles.formLabel}>Model: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                                <Input
-                                    autoFocus={focus}
+                                <TextInput
                                     placeholder='Civic'
+                                    autoFocus={true}
                                     onChangeText={(text) => handleModelChange(text)}
                                     value={model}
                                     onSubmitEditing={() => handleSubmit(idIndex)}
@@ -148,7 +149,7 @@ const FormPage = ({ navigation }) => {
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
                                     placeholder='2010'
-                                    autoFocus={focus}
+                                    autoFocus={true}
                                     keyboardType="number-pad"
                                     returnKeyType="done"
                                     onChangeText={(text) => handleYearChange(text)}
@@ -168,7 +169,6 @@ const FormPage = ({ navigation }) => {
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
                                     placeholder='40,000km'
-                                    autoFocus={true}
                                     keyboardType="number-pad"
                                     returnKeyType="done"
                                     onChangeText={(text) => handleAverageDistanceChange(text)}
@@ -208,7 +208,6 @@ const FormPage = ({ navigation }) => {
                                     placeholder="Driver's Age"
                                     keyboardType="number-pad"
                                     returnKeyType="done"
-                                    autoFocus={true}
                                     onChangeText={(text) => handleAgeChange(text)}
                                     value={age}
                                     onSubmitEditing={() => handleSubmit(idIndex)}
@@ -220,7 +219,7 @@ const FormPage = ({ navigation }) => {
             case 7:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/gender.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "15%" }} />
+                        {/* <Image source={require('../styles/gender.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "15%" }} /> */}
                         <View>
                             <Text style={styles.formLabel}>Gender: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
@@ -238,7 +237,7 @@ const FormPage = ({ navigation }) => {
             case 8:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/is_used.png')} style={{ width: Platform.OS === "android" ? "83%" : 300, height: "19%", position: "absolute", top: "15%" }} />
+                        {/* <Image source={require('../styles/is_used.png')} style={{ width: Platform.OS === "android" ? "83%" : 300, height: "19%", position: "absolute", top: "15%" }} /> */}
                         <Text style={styles.formLabel}>Condition of your car: </Text>
                         <RadioForm
                             style={styles.RadioButton}
@@ -262,7 +261,7 @@ const FormPage = ({ navigation }) => {
     }
     return (
         <View style={[styles.FormPageContainer, { alignItems: 'center' }]}>
-            <KeyboardAvoidingView style={{}}>
+            <KeyboardAvoidingView>
                 {renderInput(idIndex)}
             </KeyboardAvoidingView>
         </View>
