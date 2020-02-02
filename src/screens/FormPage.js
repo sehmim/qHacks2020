@@ -139,13 +139,15 @@ const FormPage = ({ navigation }) => {
             case 3:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/model.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "19%", position: "absolute", top: "20%" }} />
+                        <Image source={require('../styles/year.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "23%", position: "absolute", top: "15%" }} />
                         <View>
-                            <Text style={styles.formLabel}>Year: </Text>
+                            <Text style={styles.formLabel}>Year of Purchase: </Text>
                             <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
                                 <Input
-                                    placeholder='Year'
+                                    placeholder='2010'
                                     autoFocus={true}
+                                    keyboardType="number-pad"
+                                    returnKeyType="done"
                                     onChangeText={(text) => handleYearChange(text)}
                                     value={year}
                                     onSubmitEditing={() => handleSubmit(idIndex)}
@@ -158,63 +160,75 @@ const FormPage = ({ navigation }) => {
                 return (
                     <View style={styles.ScreenWrapper}>
                         <Image source={require('../styles/distance.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "19%", position: "absolute", top: "20%" }} />
-                        <Text style={styles.formLabel}>Distance travelled: </Text>
-                        <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                            <Input
-                                placeholder='40,000km'
-                                autoFocus={true}
-                                onChangeText={(text) => handleAverageDistanceChange(text)}
-                                value={vehicleDistance}
-                                onSubmitEditing={() => handleSubmit(idIndex)}
-                            />
+                        <View>
+                            <Text style={styles.formLabel}>Distance travelled: </Text>
+                            <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                                <Input
+                                    placeholder='40,000km'
+                                    autoFocus={true}
+                                    keyboardType="number-pad"
+                                    returnKeyType="done"
+                                    onChangeText={(text) => handleAverageDistanceChange(text)}
+                                    value={vehicleDistance}
+                                    onSubmitEditing={() => handleSubmit(idIndex)}
+                                />
+                            </View>
                         </View>
                     </View>
                 )
             case 5:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/location.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "15%" }} />
-                        <Text style={styles.formLabel}>Location: </Text>
-                        <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                            <Input
-                                placeholder='Toronto'
-                                autoFocus={true}
-                                onChangeText={(text) => handleLocationChange(text)}
-                                value={location}
-                                onSubmitEditing={() => handleSubmit(idIndex)}
-                            />
+                        <Image source={require('../styles/location.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "12%" }} />
+                        <View>
+                            <Text style={styles.formLabel}>Location: </Text>
+                            <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                                <Input
+                                    placeholder='Toronto'
+                                    autoFocus={true}
+                                    onChangeText={(text) => handleLocationChange(text)}
+                                    value={location}
+                                    onSubmitEditing={() => handleSubmit(idIndex)}
+                                />
+                            </View>
                         </View>
                     </View>
                 )
             case 6:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/age.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "35%", position: "absolute", top: "8%" }} />
-                        <Text style={styles.formLabel}>Age: </Text>
-                        <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                            <Input
-                                placeholder='Driver Age'
-                                autoFocus={true}
-                                onChangeText={(text) => handleAgeChange(text)}
-                                value={age}
-                                onSubmitEditing={() => handleSubmit(idIndex)}
-                            />
+                        <Image source={require('../styles/age.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "35%", position: "absolute", top: "7%" }} />
+                        <View>
+                            <Text style={styles.formLabel}>Age: </Text>
+                            <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                                <Input
+                                    placeholder='Driver Age'
+                                    keyboardType="number-pad"
+                                    returnKeyType="done"
+                                    autoFocus={true}
+                                    onChangeText={(text) => handleAgeChange(text)}
+                                    value={age}
+                                    onSubmitEditing={() => handleSubmit(idIndex)}
+                                />
+                            </View>
                         </View>
                     </View>
                 )
             case 7:
                 return (
                     <View style={styles.ScreenWrapper}>
-                        <Image source={require('../styles/age.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "35%", position: "absolute", top: "8%" }} />
-                        <Text style={styles.formLabel}>Gender: </Text>
-                        <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
-                            <Input
-                                placeholder='Gender'
-                                autoFocus={true}
-                                onChangeText={(text) => handleGenderChange(text)}
-                                value={gender}
-                                onSubmitEditing={() => handleSubmit(idIndex)}
-                            />
+                        <Image source={require('../styles/gender.png')} style={{ width: Platform.OS === "android" ? "83%" : "100%", height: "30%", position: "absolute", top: "15%" }} />
+                        <View>
+                            <Text style={styles.formLabel}>Gender: </Text>
+                            <View style={[styles.FormPageInput, { alignItems: 'center' }]}>
+                                <Input
+                                    placeholder='Gender'
+                                    autoFocus={true}
+                                    onChangeText={(text) => handleGenderChange(text)}
+                                    value={gender}
+                                    onSubmitEditing={() => handleSubmit(idIndex)}
+                                />
+                            </View>
                         </View>
                     </View>
                 )
