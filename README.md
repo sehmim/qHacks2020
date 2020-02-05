@@ -3,6 +3,8 @@
 
 ![alt text](https://files.slack.com/files-pri/TSN2M1MGR-FTED78JKW/untitled_11.png  "Carsurance")
 
+[Check DevPost link for better README](https://devpost.com/software/qhacks2020-0cu3fq)
+
 
 We provide:
   - Single input processs that user types in only once which goes out to different companies and predicts quotes driven by real data. 
