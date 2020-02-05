@@ -1,8 +1,6 @@
 # CarSurance!
 ##### Native app that uses Machine Learning to predict best car insurance quotes.  
 
-![alt text](https://files.slack.com/files-pri/TSN2M1MGR-FTED78JKW/untitled_11.png  "Carsurance")
-
 [Check DevPost link for better README](https://devpost.com/software/qhacks2020-0cu3fq)
 
 
